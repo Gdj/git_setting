@@ -35,6 +35,12 @@
     ```
 	git clone 원격저장소 주소
     ```
+    
+## 원격 저장소에서 받아오기 
+1. 다른 작업자가 올린 작업파일 받기
+    ```
+    git pull
+    ```
 
 ## 파일 추가 & 변경 원격 저장소 올리기
 1. 작업홀더 새로운파일, 수정파일 stage올리기
@@ -44,10 +50,14 @@
     
 2. stage올린 파일을commit한다 , -m 옆에는 메세지를 작성할수있다.
     ```
-    git commit -m '커밋 내용'      
+    git commit -m "커밋 내용"      
+    ```
+3. 1,2 번동작 한번에 하기
+    ```
+    git commit -am "커밋 내용"
     ```
 
-3. stage파일을 git에 서버에 (origin 원격저장소)  master branch로 올린다.
+4. stage파일을 git에 서버에 (origin 원격저장소)  master branch로 올린다.
     ```
     git push -u origin master   
     ```
