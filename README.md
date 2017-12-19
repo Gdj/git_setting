@@ -52,6 +52,7 @@
     ```
     git commit -m "커밋 내용"      
     ```
+    
 3. 1,2 번동작 한번에 하기
     ```
     git commit -am "커밋 내용"
@@ -61,13 +62,24 @@
     ```
     git push -u origin master   
     ```
+    
   
 ## 되돌리기
 1. commit 이전으로 되돌리기 (stage 복구)
     ```
-    git rest --'파일이름'
+    git rest -- '파일이름'
     ```
+    
 2. add 이전으로 되돌리기(Working directory 복구) 
+    ```
+    git checkout -- '파일이름'
+    ```
+    
+3. 1,2 한꺼번에 돌리 복구
+    ```
+    git checkout HEAD -- '파일이름'
+    ```
+    
   
 ## 버전관리 에서 제외하기 (Ignore) 
 1. .git있는 디렉토리 (최상위 폴더)에 가서 ".gitignore" 파일을 만든다.
