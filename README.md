@@ -61,7 +61,14 @@
     ```
     git push -u origin master   
     ```
-    
+  
+## 되돌리기
+1. commit 이전으로 되돌리기 (stage 복구)
+    ```
+    git rest --'파일이름'
+    ```
+2. add 이전으로 되돌리기(Working directory 복구) 
+  
 ## 버전관리 에서 제외하기 (Ignore) 
 1. .git있는 디렉토리 (최상위 폴더)에 가서 ".gitignore" 파일을 만든다.
 
