@@ -24,7 +24,7 @@
 1. 로컬 디렉토리 저장소 만들어 원격저장소에 올리기
     
     ```
-    git init    
+    git init        
 	git add --all (git add .)	
 	git commit -m "커밋 내용"
 	git remote add origin '원격저장소 주소'
@@ -89,6 +89,9 @@
   
 ## 버전관리 에서 제외하기 (Ignore) 
 1. .git있는 디렉토리 (최상위 폴더)에 가서 ".gitignore" 파일을 만든다.
+    ```
+    fsutil file createnew .gitignore 1    
+    ```
 
 2. 특정 확장자 제외하기, 홀더 제외하기 파일에 아래내용 적용.
     ```
