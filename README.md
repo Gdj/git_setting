@@ -33,8 +33,15 @@
 
 
 2. 기존 원격 저장소 clone하기
+    
     ```
 	git clone '원격저장소 주소'
+    ```
+    
+    - mac
+    ```
+    sudo xcodebuild -license
+    sudo git clone '원격저장소 주소'
     ```
     
 3. 기존 원격 저장소 계정으로 clone하기
