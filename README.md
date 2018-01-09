@@ -19,7 +19,20 @@
     ```
 	git config --list
     ```
-
+    
+    - git commit 상태확인
+    ```
+    git logo
+    ```
+    
+    
+    - 원격 저장소 확인
+    ```
+    git remote -v 
+    ```
+    
+    
+    
 ## 저장소 만들기
 1. 로컬 디렉토리 저장소 만들어 원격저장소에 올리기
     
@@ -66,7 +79,7 @@
     git commit -m "커밋 내용"      
     ```
     
-3. 1,2 번동작 한번에 하기
+3. 1,2 번동작 한번에 하기 (새로만든 파일은 커밋 되지 않는다)
     ```
     git commit -am "커밋 내용"
     ```
@@ -75,9 +88,104 @@
     ```
     git push -u origin master   
     ```
+
+## 가지치기 (branch) 기본 브랜치는 master
+1. 가지 만들기
+    ```
+    git branch '가지이름'
+    ```
+2. 가지 이동
+    ```
+    git checkout '가지이름'
+    ```
+3. 1,2 가지만들고 이동 동시에
+    ```
+    git checkout -b '가지이름'
+    ```
+
+4. 현재 가지 확인
+    ```
+    git branch
+    ```
+5. 모든 브랜치 / 가지이름 / 그래프로 / 간결하게 확인
+    ```
+    git log --branches --decorate --graph --oneline
+    q
+    ```
+6. GUI Tool로 보기 (소스트리 설치후)
+    ```
+    stree
+    ```
+    
+7. master가지와 다른가지의 차이 비교
+    - master는 없고 다른 가지에 있는거비교
+    ```
+    git log master..'가지이름'
+    ```
+    
+    - 소스코드 확인 비교
+    ```
+    git log -p master..'가지이름'
+    ```
+    
+    - 프랜치의 현재 상태 비교
+    ```
+    git diff master..'가지이름'
+    ```
+7. 가지 삭제
+    - 가지 삭제 (머지되면 그냥 지워진다)
+    ```
+    git branch -d '가지이름'
+    ```
+    - 가지 강제 삭제 (머지되지 않아도 그냥 지워진다.)
+    ```
+    git branch -D '가지이름'
+    ```
+
+## 가지 합하기 (merge)
+1. master로 가지 병합하기
+    - 마스터로 이동후 변경된 가지를 병합
+    ```
+    git checkout master 
+    git merge '가지이름'
+    ```
+2. 필요없는 가지 삭제 
+    - 가지 지우기
+    ```
+    git brach -d '가지이름'
+    ```
+
+
+## 가지 되돌리기 (rest) 프랜치에 commit 이동
+1. commit id로 되돌리기
+    ```
+    git reset --hard 'commit id'
+    ```
+2. reset 취소
+    ```
+    git reset --hard ORIG_HEAD
+    ```
+3. 로그 보기
+    ```
+    git reflog 
+    ```
+4. 로그 보고 되돌리기
+    ```
+    git reset 'id값'
+    ```
+    
+## 커밋 되돌리기 (checkout) 
+1. commit id로 되돌리기 (HEAD는 "refs/heads/master"를 가르키지 않고 commit id로 변경된다.)
+    ```
+    git checkout 'commit id'
+    ```
+2. checkout 취소 master 프랜치 로 되돌아 가기
+    ```
+    git checkout master
+    ```
     
   
-## 되돌리기
+## 파일되돌리기 되돌리기 (checkout) 
 1. commit 이전으로 되돌리기 (stage 복구)
     ```
     git rest -- '파일이름'
@@ -93,6 +201,32 @@
     git checkout HEAD -- '파일이름'
     ```
     
+## 충돌 해결하기
+1. 합치기 
+    ```
+    git merge '가지 이름'
+    ```
+2. 충돌 내용 보기
+    ```
+    git status
+    ```
+
+3. 출돌 소스 열어서 확인
+    ```
+    <<<<<<< HEAD
+    마스터계정 소스코드
+    =======
+    적용하려는 가지 소스코드
+    <<<<<<< '가지이름'
+    ```
+4. 직접 수정하여 다시 올린다.
+    ```
+    git add '수정파일'
+    git common 
+    ```
+    
+    
+
   
 ## 버전관리 에서 제외하기 (Ignore) 
 1. .git있는 디렉토리 (최상위 폴더)에 가서 ".gitignore" 파일을 만든다.
@@ -126,5 +260,3 @@
     ```
 
     
-## 작업순서
-1. pull -> work -> commit -> pull -> push 
