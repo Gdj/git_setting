@@ -149,12 +149,6 @@
     git checkout master 
     git merge '가지이름'
     ```
-2. 필요없는 가지 삭제 
-    - 가지 지우기
-    ```
-    git brach -d '가지이름'
-    ```
-
 
 ## 가지 되돌리기 (rest) 프랜치에 commit 이동
 1. commit id로 되돌리기
