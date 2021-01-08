@@ -22,9 +22,14 @@
     
     - git commit 상태확인
     ```
-    git logo
+    git log
     ```
-    
+
+    - git commit 변경 상세 확인
+    ```
+    git log -p
+    ```
+      
     
     - 원격 저장소 확인
     ```
@@ -132,6 +137,17 @@
     ```
     git diff master..'가지이름'
     ```
+
+    -- 프랜지의 파일 상태 비교
+    ```
+    git diff --name-status branch1..branch2
+    ```
+
+    -- 프랜지의 특정파일 비교
+    ```
+    git diff branch1:file.txt branch2:file.txt
+    ```
+
 7. 가지 삭제
     - 가지 삭제 (머지되면 그냥 지워진다)
     ```
