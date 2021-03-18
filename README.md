@@ -72,7 +72,7 @@
     ```
     git pull
     ```
-2. master 브런치 받기
+2. master 브런치 받기 (git pull 저장소 브런치)
     ```
     git pull origin master
     ```
