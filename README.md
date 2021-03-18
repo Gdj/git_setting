@@ -72,6 +72,10 @@
     ```
     git pull
     ```
+2. master 브런치 받기
+    ```
+    git pull origin master
+    ```
 
 ## 파일 추가 & 변경 원격 저장소 올리기
 1. 작업홀더 새로운파일, 수정파일 stage올리기
