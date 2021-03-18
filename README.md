@@ -93,10 +93,13 @@
     git commit -am "커밋 내용"
     ```
 
-4. stage파일을 git에 서버에 (origin 원격저장소)  master branch로 올린다.
+4. stage파일을 git에 서버에 (origin 원격저장소)  master branch로 올린다.  
+    - `-u`옵션을 사용하면 최초 한번만 (저장소명, 브랜치명)을 넘기고 이후는 `git push` 하면 동일 저장소, 브랜치명으로 push 된다.
     ```
     git push -u origin master   
     ```
+    
+
 
 ## 가지치기 (branch) 기본 브랜치는 master
 1. 가지 만들기
