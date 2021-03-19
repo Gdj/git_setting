@@ -3,7 +3,7 @@
 
 ## Git 설치 세팅
 1. OS버젼에 맞게 설치 : [git download](https://git-scm.com/downloads)
-2. 사용자정보 변경
+2. 사용자정보 등록
 	- 프로젝트 홀더에서 "--global"을 빼면 프로젝트마다 설정 할수있다. 
     ```
 	git config --global user.name '이름'
