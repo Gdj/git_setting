@@ -31,7 +31,6 @@ win : C:\Users\사용자\.ssh
 
   ```
   ssh-keygen -t rsa -b 4096 -C "email@example.com"
-
   ```
 
 - 비빌번호 입력, 한번더 입력
