@@ -51,11 +51,26 @@
 
 
 2. 기존 원격 저장소 clone하기
-    
+    - 저장소이름과 동일하게 클론하기
     ```
 	git clone '원격저장소 주소'
     ```
-    
+    - 새로운 이름에 폴더에 클론하기
+    git clone '원격저장소 주소' './폴더명'
+
+    - 특정폴더만 클론
+        1. 저장소 초기 화 
+            `git init`
+        2. Git 저장소 주소 추가  
+            `git remote add origin '원격저장소 주소'`
+        3. git sparse Checkout  활성화 하도록 config 수정
+            `git config core.sparsecheckout true` 
+        4. clone 할 폴더이름(원격저장소 이후경로)에 하위더까지 명시 
+            `echo '폴더경로'/* >> ./.git/info/sparse-checkout`
+        5. "프랜치명"으로 pull해서 가져오기.
+            `git pull origin main`
+
+
     - mac
     ```
     sudo xcodebuild -license
