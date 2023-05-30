@@ -1,5 +1,13 @@
 # GIT 설치 & 사용법
 ----
+  - [Git 설치 세팅](#_git_설치_세팅) 
+  - [저장소 만들기](#_저장소_만들기) 
+    + [깃허브 저장소 만들기](#_깃허브_저장소_만들기) 
+    + [로컬 저장소 만들기](#_로컬_저장소_만들기) 
+  - [깃 기본작업](#_깃_기본작업) 
+  - [branch](#_branch) 
+    + [가지치기 (branch) 기본기능](#_가지치기_(branch)_기본기능) 
+
 
 ## Git 설치 세팅
 1. OS버젼에 맞게 설치 : [git download](https://git-scm.com/downloads)
@@ -124,7 +132,7 @@
   ```
     
 
-## 프로젝트 진행중...
+## 깃 기본작업
 
 ### 원격 저장소에서 받아오기 
   #### 1. 다른 작업자가 올린 작업파일 받기
@@ -160,15 +168,24 @@
     
 
 
-### 가지치기 (branch) 기본 브랜치는 main
+## branch
+### 가지치기 (branch) 기본기능
+  #### 0. 가지 업데이트 
+  - 원격 프랜치 정보 업데이트
+  ``` bssh
+  git remote update
+  ```
+
   #### 1. 가지 만들기
   ``` bash
   git branch '가지이름'
   ```
+
   #### 2. 가지 이동
   ``` bash
   git checkout '가지이름'
   ```
+
   #### 3. 1,2 가지만들고 이동 동시에
   ``` bash
   git checkout -b '가지이름'
@@ -178,17 +195,19 @@
   ``` bash
   git branch
   ```
+
   #### 5. 모든 브랜치 / 가지이름 / 그래프로 / 간결하게 확인
   ``` bash
   git log --branches --decorate --graph --oneline
   q
   ```
+
   #### 6. GUI Tool로 보기 (소스트리 설치후)
   ``` bash
   stree
   ```
-    
-  #### 7. master가지와 다른가지의 차이 비교
+
+  #### 7. main가지와 다른가지의 차이 비교
   - master는 없고 다른 가지에 있는거비교
     ``` bash
     git log master..'가지이름'
@@ -225,7 +244,7 @@
     ```
 
 ### 가지 합치기 (merge)
-  #### 1. master로 가지 병합하기
+  #### 1. main로 가지 병합하기
   - 마스터로 이동후 변경된 가지를 병합
     ``` bast
     git checkout master 
