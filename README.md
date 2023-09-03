@@ -1,6 +1,18 @@
 # GIT 설치 & 사용법
 ----
 
+## Git 계정 확인및 병경
+- `git config --global` 로하면 전역 으로 확인 변경할 수 있다.
+- 유저이름 확인
+    `git config user.name`
+- 유저이름 변경
+    `git config user.name "변경할 유저 네임"`
+- 계정 이메일 확인
+    `git config user.email`
+- 계정 이메일 변경
+    `git config user.email "변경하고자하는 깃헙 이메일 주소"`    
+
+
 ## Git 설치 세팅
 1. OS버젼에 맞게 설치 : [git download](https://git-scm.com/downloads)
 2. 사용자정보 등록
