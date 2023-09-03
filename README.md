@@ -1,5 +1,13 @@
 # GIT 설치 & 사용법
 ----
+  - [Git 설치 세팅](#_git_설치_세팅) 
+  - [저장소 만들기](#_저장소_만들기) 
+    + [깃허브 저장소 만들기](#_깃허브_저장소_만들기) 
+    + [로컬 저장소 만들기](#_로컬_저장소_만들기) 
+  - [깃 기본작업](#_깃_기본작업) 
+  - [branch](#_branch) 
+    + [가지치기 (branch) 기본기능](#_가지치기_(branch)_기본기능) 
+
 
 ## Git 계정 확인및 병경
 - `git config --global` 로하면 전역 으로 확인 변경할 수 있다.
@@ -41,55 +49,114 @@
     ```
     git log -p
     ```
-      
     
     - 원격 저장소 확인
     ```
     git remote -v 
     ```
-    
-    
-    
+
+
 ## 저장소 만들기
-1. 로컬 디렉토리 저장소 만들어 원격저장소에 올리기
+
+### 깃허브 저장소 만들기
+  #### 1. 깃허브 로그인후 : 우측상단 "+" 클릭 > repository
+  #### 2. `Repository name` : 저장소 이름생성 
+  `Description`     : 저장소 설명
+  `Public` or `Private` : 공개 여부 (호스팅 할경우 Public 으로해함)
+  `Add a README file` : 리드미 파일 생성여부
+  `Add .gitignore`    : 저장소에 동기화 되지 않을 파일, 패턴등록
+  `Choose a license`  : 라이센스 등록  
+  > `GNU General Public License(GPL) 2.0` 
+    - 소프트웨어를 배포하는 경우 저작권 표시, 보증책임이 없다는 표시 및 GPL에 의해 배포된다는 사실 명시
+    - 소프트웨어를 수정하거나 새로운 소프트웨어를 병합(Dynamic linking 포함)시키는 경우 GPL에 의해 소스 코드 제공
+    - GPL 소프트웨어를 배포하는 경우, 소스 코드 그 자체를 함께 배포하거나 또는 소스코드를 제공받을 수 있는 방법에     대한 정보를 함께 제공
+
+  > `MIT License` 
+    - 라이센스와 저작권 관련 명시만 지켜주면 되는 라이센스이다.
+    - 이 소프트웨어를 누구라도 무상으로 제한없이 취급해도 좋다.
+    - 저자 또는 저작권자는 소프트웨어에 관해서 아무런 책임을 지지 않는다.
     
-    ```
-    git init        
-	git add --all (git add .)	
-	git commit -m "커밋 내용"
-	git remote add origin '원격저장소 주소'
-	git push -u origin master
-	```
+  #### 3. `Create repository` 완료~
+  ``` bash
+    git init
+    git add README.md
+    git commit -m "커밋 내용"
+    git branch -M main
+    git remote add origin <저장소 주소>
+    git push -u origin main
+  ```
+#### 깃허브 호스팅 (github page)
+  - 프로젝트 텝메뉴 에서: `Settings` 
+  - 왼쪽메뉴 : pages > Branch > None | main (서비스할 브런치 선택) > save
+  - 반영 시간이 필요함 진행 상황 보기 에서 확인할 수 있음.
+  - 진행 상황 보기 : 프로젝트 텝메뉴에서 `Actions` > pages build and deployment
 
 
-2. 기존 원격 저장소 clone하기
+#### 깃허브 공유 받기
+  - 프로젝트 텝메뉴 에서: `Settings` 
+  - 왼쪽메뉴 : `Collaborators` > Manage access : `Add people` 버튼 > 깃허브 가입 메일 주소
+  - 공유 받은 사람은 메일에서 초대장에 승인 해야함. "View invitation"
+
     
+### 로컬 저장소 만들기
+  #### 로컬 디렉토리 저장소 만들어 원격저장소에 올리기
+  ``` bash
+  git init        
+  git add --all (git add .)	
+  git commit -m "커밋 내용"
+  git remote add origin <저장소 주소>
+  git push -u origin main
+  ```
+
+  #### 기존 원격 저장소 clone하기
+  - 저장소이름과 동일하게 클론하기
+    ``` bash
+    git clone '원격저장소 주소'
     ```
-	git clone '원격저장소 주소'
+  - 새로운 이름에 폴더에 클론하기
+    ``` bash
+    git clone '원격저장소 주소' './폴더명'`
     ```
-    
-    - mac
+  - 특정 브런치만 새로운 폴더로 클론하기
+    ``` bash
+    git clone -b '브런치이름' --single-branch '원격저장소 주소'
     ```
+  - 특정폴더만 클론
+    a. 저장소 초기 화 :   `git init`
+    b. Git 저장소 주소 추가 : `git remote add origin '원격저장소 주소'`
+    c. git sparse Checkout  활성화 하도록 config 수정 : 
+      `git config core.sparsecheckout true` 
+    d. clone 할 폴더이름(원격저장소 이후경로)에 하위더까지 명시 
+      `echo '폴더경로'/* >> ./.git/info/sparse-checkout`
+    e. "프랜치명"으로 pull해서 가져오기.
+      `git pull origin main`
+
+
+  - mac
+    ``` bash
     sudo xcodebuild -license
     sudo git clone '원격저장소 주소'
     ```
+      
+  #### 기존 원격 저장소 계정으로 clone하기
+  ``` bash
+  git clone --recursive '계정메일주소:원격저장소 주소'
+  ```
     
-3. 기존 원격 저장소 계정으로 clone하기
-    ```
-    git clone --recursive '계정메일주소:원격저장소 주소'
-    ```
-    
-## 원격 저장소에서 받아오기 
-1. 다른 작업자가 올린 작업파일 받기
-    ```
+
+## 깃 기본작업
+
+### 원격 저장소에서 받아오기 
+  #### 1. 다른 작업자가 올린 작업파일 받기
+    ``` bash
     git pull
     ```
-2. master 브런치 받기 (git pull 저장소 브런치)
-    ```
+  #### 2. master 브런치 받기 (git pull 저장소 브런치)
+    ``` bash
     git pull origin master
     ```
 
-## 파일 추가 & 변경 원격 저장소 올리기
+### 파일 추가 & 변경 원격 저장소 올리기
 1. 작업홀더 새로운파일, 수정파일 stage올리기
     ```
     git add .                       
@@ -113,80 +180,93 @@
     
 
 
-## 가지치기 (branch) 기본 브랜치는 master
-1. 가지 만들기
-    ```
-    git branch '가지이름'
-    ```
-2. 가지 이동
-    ```
-    git checkout '가지이름'
-    ```
-3. 1,2 가지만들고 이동 동시에
-    ```
-    git checkout -b '가지이름'
-    ```
+## branch
+### 가지치기 (branch) 기본기능
+  #### 0. 가지 업데이트 
+  - 원격 프랜치 정보 업데이트
+  ``` bssh
+  git remote update
+  ```
 
-4. 현재 가지 확인
-    ```
-    git branch
-    ```
-5. 모든 브랜치 / 가지이름 / 그래프로 / 간결하게 확인
-    ```
-    git log --branches --decorate --graph --oneline
-    q
-    ```
-6. GUI Tool로 보기 (소스트리 설치후)
-    ```
-    stree
-    ```
-    
-7. master가지와 다른가지의 차이 비교
-    - master는 없고 다른 가지에 있는거비교
-    ```
+  #### 1. 가지 만들기
+  ``` bash
+  git branch '가지이름'
+  ```
+
+  #### 2. 가지 이동
+  ``` bash
+  git checkout '가지이름'
+  ```
+
+  #### 3. 1,2 가지만들고 이동 동시에
+  ``` bash
+  git checkout -b '가지이름'
+  ```
+
+  #### 4. 현재 가지 확인
+  ``` bash
+  git branch
+  ```
+
+  #### 5. 모든 브랜치 / 가지이름 / 그래프로 / 간결하게 확인
+  ``` bash
+  git log --branches --decorate --graph --oneline
+  q
+  ```
+
+  #### 6. GUI Tool로 보기 (소스트리 설치후)
+  ``` bash
+  stree
+  ```
+
+  #### 7. main가지와 다른가지의 차이 비교
+  - master는 없고 다른 가지에 있는거비교
+    ``` bash
     git log master..'가지이름'
     ```
     
-    - 소스코드 확인 비교
-    ```
+  - 소스코드 확인 비교
+    ``` bash
     git log -p master..'가지이름'
     ```
-    
-    - 프랜치의 현재 상태 비교
-    ```
+  
+  - 프랜치의 현재 상태 비교
+    ``` bash
     git diff master..'가지이름'
     ```
 
-    -- 프랜지의 파일 상태 비교
-    ```
+  - 프랜지의 파일 상태 비교
+    ``` bash
     git diff --name-status branch1..branch2
     ```
 
-    -- 프랜지의 특정파일 비교
-    ```
+  - 프랜지의 특정파일 비교
+    ``` bash
     git diff branch1:file.txt branch2:file.txt
     ```
 
-7. 가지 삭제
-    - 가지 삭제 (머지되면 그냥 지워진다)
-    ```
+  #### 8. 가지 삭제
+  - 가지 삭제 (머지되면 그냥 지워진다)
+    ``` bash
     git branch -d '가지이름'
-    ```
-    - 가지 강제 삭제 (머지되지 않아도 그냥 지워진다.)
-    ```
+    ``` 
+  - 가지 강제 삭제 (머지되지 않아도 그냥 지워진다.)
+    ``` bash
     git branch -D '가지이름'
     ```
 
-## 가지 합치기 (merge)
-1. master로 가지 병합하기
-    - 마스터로 이동후 변경된 가지를 병합
-    ```
+### 가지 합치기 (merge)
+  #### 1. main로 가지 병합하기
+  - 마스터로 이동후 변경된 가지를 병합
+    ``` bast
     git checkout master 
     git merge '가지이름'
     ```
 
-## 가지 되돌리기 (rest) 프랜치에 commit 이동
-### option 
+
+
+### 가지 되돌리기 (rest) 프랜치에 commit 이동
+#### option 
     - hard : 돌아가려는 이력이후의 모든 내용을 지워 버립니다. 
     - soft : 돌아가려 했던 이력으로 되돌아 갔지만, 이후의 내용이 지워지지 않안음.
     - mixed : (기본값) 이력은 되돌려집니다. 이후에 변경된 내용에 대해서는 남아있지만, 인덱스는 초기화 됩니다.
@@ -207,7 +287,7 @@
     git reset 'id값'
     ```
     
-## 커밋 되돌리기 (checkout) 
+### 커밋 되돌리기 (checkout) 
 1. commit id로 되돌리기 (HEAD는 "refs/heads/master"를 가르키지 않고 commit id로 변경된다.)
     ```
     git checkout 'commit id'
@@ -218,7 +298,7 @@
     ```
     
   
-## 파일되돌리기 되돌리기 (checkout) 
+### 파일되돌리기 되돌리기 (checkout) 
 1. commit 이전으로 되돌리기 (stage 복구)
     ```
     git rest -- '파일이름'
@@ -234,7 +314,7 @@
     git checkout HEAD -- '파일이름'
     ```
     
-## 충돌 해결하기
+### 충돌 해결하기
 1. 합치기 
     ```
     git merge '가지 이름'
@@ -261,7 +341,7 @@
     
 
   
-## 버전관리 에서 제외하기 (Ignore) 
+### 버전관리 에서 제외하기 (Ignore) 
 1. .git있는 디렉토리 (최상위 폴더)에 가서 ".gitignore" 파일을 만든다.
     ```
     fsutil file createnew .gitignore 1    
