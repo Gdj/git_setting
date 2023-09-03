@@ -19,6 +19,14 @@
     `git config user.email`
 - 계정 이메일 변경
     `git config user.email "변경하고자하는 깃헙 이메일 주소"`    
+- ssh agent에 등록
+  `ssh-add 파일명` or `ssh-add ~/.ssh` 다른디렉토리에서 접근하여 실행
+  `Could not open a connection to your authentication agent.` 메시지가 뜨면
+  `eval $(ssh-agent)` 실행후 재시도
+- ssh agent 등록 확인
+  `ssh-add -l`
+- github 사이트 이동 > 로그인후 우측상단 내아이콘 클릭 > settings > 왼쪽메뉴 > SSH and GPG keys > .pub 파일 내용을 "key" 영역에 붙여넣기
+  
 
 
 ## Git 설치 세팅

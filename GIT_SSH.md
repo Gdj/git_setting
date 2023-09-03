@@ -1,5 +1,26 @@
 # GIT SSH 키생성
 
+## SSH key
+1. 생성 
+  - 홈디렉토리(c:users/사용자이름/.ssh)에 `.ssh` 디렉 토리 생성 
+  ```
+    mkdir ~/.ssh
+    cd ~/.ssh
+  ```
+  - `cd ~/.ssh` : ssh key 관리하는 디렉토리로 이동
+  - `ls -al` or `ls -l`   : 기존 파일 목록 확인
+  - 키생성 "id_userA" key파일 이름
+  ```
+  ssh-keygen -t rsa -C "userA@example.com" -f "id_userA"
+  ```
+  - enter 치면 비밀번호 없이 사용할 수 있습니다.
+  ```
+  Enter passphrase (empty for no passphrase): 
+  Enter same passphrase again: 
+  ```
+  - `.pub` 공개키고 없는것이 개인 키 입니다.
+
+
 ## SSH 키생성 
 - `.ssh` 폴더 생성 위치
 win : C:\Users\사용자\.ssh
