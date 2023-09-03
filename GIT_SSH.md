@@ -9,7 +9,7 @@
   ```
   - `cd ~/.ssh` : ssh key 관리하는 디렉토리로 이동
   - `ls -al` or `ls -l`   : 기존 파일 목록 확인
-  - 키생성 "id_userA" key파일 이름
+  - 키생성 "id_userA" key파일 이름 : 기본값으로 생성 `ssh-keygen`
   ```
   ssh-keygen -t rsa -C "userA@example.com" -f "id_userA"
   ```

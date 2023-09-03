@@ -19,6 +19,9 @@
     `git config user.email`
 - 계정 이메일 변경
     `git config user.email "변경하고자하는 깃헙 이메일 주소"`    
+- 계정 정오
+  `git config --list`
+
 - ssh agent에 등록
   `ssh-add 파일명` or `ssh-add ~/.ssh` 다른디렉토리에서 접근하여 실행
   `Could not open a connection to your authentication agent.` 메시지가 뜨면
@@ -43,9 +46,9 @@
 	git config --global core.editor "'C:/Program Files/EditPlus/editplus.exe' -multiInst -nosession"
     ```
     
-	- 설정 확인
+	- 설정 확인 : 축약 `git config -l`
     ```
-	git config --list
+	  git config --list 
     ```
     
     - git commit 상태확인
@@ -115,6 +118,7 @@
   git remote add origin <저장소 주소>
   git push -u origin main
   ```
+  - add 목록 보기 : `git status` 
 
   #### 기존 원격 저장소 clone하기
   - 저장소이름과 동일하게 클론하기
