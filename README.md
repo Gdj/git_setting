@@ -144,6 +144,14 @@
     git pull origin master
     ```
 
+### 원격 저장소에서 특정 폴더만 받아오기
+  1. 폴더 생성 및 폴더접근후.
+  2. `git init` : 초기화
+  3. `git config core.sparseCheckout true` : sparse checkout 가능하도록함.
+  4. `git remote add -f origin [repository URL]` : 깃 클론 주소
+  5. `echo "[ 깃의 받고싶은 하위홀더주소 ]" >> .git/info/sparse-checkout` 
+  6. `git pull origin main` : "main" 브랜트로 당겨오기.
+
 ### 파일 추가 & 변경 원격 저장소 올리기
 1. 작업홀더 새로운파일, 수정파일 stage올리기
     ```
