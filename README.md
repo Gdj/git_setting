@@ -9,6 +9,29 @@
     + [가지치기 (branch) 기본기능](#_가지치기_(branch)_기본기능) 
 
 
+## Git 계정 확인및 병경
+- `git config --global` 로하면 전역 으로 확인 변경할 수 있다.
+- 유저이름 확인
+    `git config user.name`
+- 유저이름 변경
+    `git config user.name "변경할 유저 네임"`
+- 계정 이메일 확인
+    `git config user.email`
+- 계정 이메일 변경
+    `git config user.email "변경하고자하는 깃헙 이메일 주소"`    
+- 계정 정오
+  `git config --list`
+
+- ssh agent에 등록
+  `ssh-add 파일명` or `ssh-add ~/.ssh` 다른디렉토리에서 접근하여 실행
+  `Could not open a connection to your authentication agent.` 메시지가 뜨면
+  `eval $(ssh-agent)` 실행후 재시도
+- ssh agent 등록 확인
+  `ssh-add -l`
+- github 사이트 이동 > 로그인후 우측상단 내아이콘 클릭 > settings > 왼쪽메뉴 > SSH and GPG keys > .pub 파일 내용을 "key" 영역에 붙여넣기
+  
+
+
 ## Git 설치 세팅
 1. OS버젼에 맞게 설치 : [git download](https://git-scm.com/downloads)
 2. 사용자정보 등록
@@ -23,9 +46,9 @@
 	git config --global core.editor "'C:/Program Files/EditPlus/editplus.exe' -multiInst -nosession"
     ```
     
-	- 설정 확인
+	- 설정 확인 : 축약 `git config -l`
     ```
-	git config --list
+	  git config --list 
     ```
     
     - git commit 상태확인
@@ -95,6 +118,7 @@
   git remote add origin <저장소 주소>
   git push -u origin main
   ```
+  - add 목록 보기 : `git status` 
 
   #### 기존 원격 저장소 clone하기
   - 저장소이름과 동일하게 클론하기
