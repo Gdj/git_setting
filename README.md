@@ -14,11 +14,11 @@
 - 유저이름 확인
     `git config user.name`
 - 유저이름 변경
-    `git config user.name "변경할 유저 네임"`
+  `git config user.name "변경할 유저 네임"`
 - 계정 이메일 확인
-    `git config user.email`
+  `git config user.email`
 - 계정 이메일 변경
-    `git config user.email "변경하고자하는 깃헙 이메일 주소"`    
+  `git config user.email "변경하고자하는 깃헙 이메일 주소"`    
 - 계정 정오
   `git config --list`
 
@@ -197,7 +197,9 @@
     ```
     git push -u origin master   
     ```
-    
+#### 로컬 커밋 되돌리기
+  - 커밋 1개 되돌리기 : `git reset HEAD^`
+  - 커밋 n개 되돌리기 : `git reset HEAD~3`  
 
 
 ## branch
