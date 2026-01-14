@@ -14,7 +14,7 @@
 ```
 
 ### clone
-- 
+- 저장소내용 복제해 로컬에 받기
 ``` bash
   git clone https://github.com/Gdj/xxx.git
 ```
@@ -22,9 +22,35 @@
 ### push 
 - 기존 저장소에 푸시
 ```bash 
-  git add .
-  git commit -m "커밋 내용"
-  git remote add origin https://github.com/Gdj/xxx.git
-  git branch -M main 
+  git commit -am "커밋 내용"  
   git push -u origin main
+```
+
+### pull
+- 저장소 파일 받기 
+```bash
+  git pull
+```
+- 브런치이름 으로 받기
+```bash
+  git pull origin {이름}
+```
+
+
+### branch
+- 현재 가지
+```bash
+  git branch
+```
+- 가지 만들기
+```bash
+  git branch '가지이름'
+```
+- 가지 이동
+```bash
+  git checkout '가지이름'
+```
+- 가지 만들고 이동
+```bash
+  git checkout -b '가지이름'
 ```
