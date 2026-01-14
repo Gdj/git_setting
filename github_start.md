@@ -44,13 +44,13 @@
 ```
 - 가지 만들기
 ```bash
-  git branch '가지이름'
+  git branch {가지이름}
 ```
 - 가지 이동
 ```bash
-  git checkout '가지이름'
+  git checkout {가지이름}
 ```
 - 가지 만들고 이동
 ```bash
-  git checkout -b '가지이름'
+  git checkout -b {가지이름}
 ```
